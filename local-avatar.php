@@ -25,6 +25,7 @@ final class Local_User_Avatar
 
         add_filter('get_avatar', [$this, 'filter_get_avatar'], 10, 6);
         add_filter('get_avatar_data', [$this, 'filter_get_avatar_data'], 10, 2);
+        add_filter('kses_allowed_protocols', [$this, 'allow_data_protocol']);
 
         add_action('admin_head-profile.php', [$this, 'hide_gravatar_section']);
         add_action('admin_head-user-edit.php', [$this, 'hide_gravatar_section']);
@@ -202,6 +203,15 @@ final class Local_User_Avatar
         return $args;
     }
 
+    public function allow_data_protocol(array $protocols): array
+    {
+        if (!in_array('data', $protocols, true)) {
+            $protocols[] = 'data';
+        }
+
+        return $protocols;
+    }
+
     private function get_local_avatar_url(int $user_id, int $size): string
     {
         $avatar_id = (int) get_user_meta($user_id, self::META_AVATAR_ID, true);
@@ -234,7 +244,7 @@ final class Local_User_Avatar
     {
         $size = max(1, $size);
         $svg = sprintf(
-            '<svg xmlns="http://www.w3.org/2000/svg" width="%1$d" height="%1$d" viewBox="0 0 100 100" role="img" aria-label="Avatar"><circle cx="50" cy="50" r="50" fill="#E5E7EB"/><circle cx="50" cy="40" r="18" fill="#C5CBD3"/><path d="M20 85c6-18 20-26 30-26s24 8 30 26" fill="#C5CBD3"/></svg>',
+            '<svg xmlns="http://www.w3.org/2000/svg" width="%1$d" height="%1$d" viewBox="0 0 100 100" role="img" aria-label="Anonymous user"><circle cx="50" cy="50" r="50" fill="#E5E7EB"/><circle cx="50" cy="38" r="16" fill="#C5CBD3"/><path d="M18 84c6-16 19-24 32-24s26 8 32 24" fill="#C5CBD3"/><rect x="22" y="62" width="56" height="20" rx="10" fill="#9CA3AF"/><text x="50" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">ANON</text></svg>',
             $size
         );
 
