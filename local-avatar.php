@@ -244,7 +244,7 @@ final class Local_User_Avatar
     {
         $size = max(1, $size);
         $svg = sprintf(
-            '<svg xmlns="http://www.w3.org/2000/svg" width="%1$d" height="%1$d" viewBox="0 0 100 100" role="img" aria-label="Anonymous user"><circle cx="50" cy="50" r="50" fill="#E5E7EB"/><circle cx="50" cy="38" r="16" fill="#C5CBD3"/><path d="M18 84c6-16 19-24 32-24s26 8 32 24" fill="#C5CBD3"/><rect x="22" y="62" width="56" height="20" rx="10" fill="#9CA3AF"/><text x="50" y="76" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#ffffff">ANON</text></svg>',
+            '<svg xmlns="http://www.w3.org/2000/svg" width="%1$d" height="%1$d" viewBox="0 0 100 100" role="img" aria-label="Anonymous user"><circle cx="50" cy="50" r="50" fill="#E5E7EB"/><circle cx="50" cy="38" r="16" fill="#C5CBD3"/><path d="M18 84c6-16 19-24 32-24s26 8 32 24" fill="#C5CBD3"/><rect x="22" y="62" width="56" height="20" rx="10" fill="#9CA3AF"/></svg>',
             $size
         );
 
