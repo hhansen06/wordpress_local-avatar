@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Local User Avatar
  * Description: Adds an avatar field to user profiles and replaces Gravatar with the locally uploaded image.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Henrik Hansen
  */
 
